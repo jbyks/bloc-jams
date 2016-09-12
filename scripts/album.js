@@ -30,6 +30,22 @@ var albumMarconi = {
     ]
 };
 
+// Third Example Album
+var albumTrentReznor = {
+    title: 'The Social Network',
+    artist: 'Trent Reznor and Atticus Ross',
+    label: 'Unknown',
+    year: '2010',
+    albumArtUrl: 'assets/images/album_covers/thesocialnetwork.jpeg',
+    songs: [
+        { title: 'Hand Covers Bruise', duration: '4:19' },
+        { title: 'In Motion', duration: '4:57' },
+        { title: 'A Familiar Taste', duration: '3:36'},
+        { title: 'It Catches Up With You', duration: '1:39' },
+        { title: 'Intriguing Possibilities', duration: '4:24'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
        '<tr class="album-view-song-item">'
@@ -65,6 +81,26 @@ var setCurrentAlbum = function(album) {
     }
 };
 
+
+
+var toggleAlbum = function(){
+    var currentAlbumTitle = document.getElementsByClassName('album-view-title')[0].firstChild.nodeValue;
+    if(currentAlbumTitle === "The Colors"){
+        setCurrentAlbum(albumMarconi);
+    }
+    else if(currentAlbumTitle === "The Telephone"){
+        setCurrentAlbum(albumTrentReznor);
+    } 
+    else{
+        setCurrentAlbum(albumPicasso);
+    }
+};
+
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+    document.getElementsByClassName('album-cover-art')[0].addEventListener("click", toggleAlbum);
 };
+
+
+
+
